@@ -1,6 +1,6 @@
 {
   "name": "simplicity-c",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Package providing multiple supplementaries in JavaScript",
   "main": "lib.js",
   "scripts": {
