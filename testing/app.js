@@ -1,3 +1,3 @@
-const { log, error } = require('simplicity-c')
+const { log, getLine } = require('simplicity-c')
 
-log(error)
+log('Test')

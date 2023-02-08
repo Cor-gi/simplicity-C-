@@ -13,14 +13,39 @@ $ npm install simplicity-c
 ## Implementation
 
 ``` javascript
-const { log, error } = require('simplicity-c')
+const { log, getLine } = require('simplicity-c')
 ```
 
-## Functions
+# Functions
 
+
+### Log:
+Better log system containing multiple types and line positioning
+```javascript
+// Syntax
+log(message, type)
+```
 ``` javascript
 log('Hello World!')
-// $ Hello World!
+//  $ [ Log: Hello World! ] at {Call Position}
 
-error(''This is an error!)
-// $ This is an error!
+log('Hello World!' 'log')
+//  $ [ Log: Hello World! ] at {Call Position}
+
+log('This is an error', 'error')
+// $ [ Error: This is an error ] at {Call Position}
+
+log('Hello World!' 'info')
+//  $ [ Info: Hello World! ] at {Call Position}
+```
+
+### GetLine:
+Function that returns line data from the called position
+``` javascript
+// Syntax
+getLine()
+```
+``` javascript
+console.log(getLine())
+//  $ {Call Position And Info}
+```
