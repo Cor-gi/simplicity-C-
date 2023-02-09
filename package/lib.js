@@ -1,3 +1,7 @@
+/**
+ * @returns {string}
+ */
+
 const getLine = () => {
     let obj = {};
     Error.captureStackTrace(obj);
@@ -6,6 +10,12 @@ const getLine = () => {
     let finpos = fin.search('at Module._compile')
     return fin.slice(0, finpos)
   };
+
+/**
+ * @param {any} message Info to display
+ * @param {string} type Selects log type
+ * @returns {console.log}
+ */
 
 const log = (message, type) => {
     if (type === 'log') {
