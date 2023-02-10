@@ -13,36 +13,35 @@ const getLine = () => {
 
 /**
  * @param {any} message Info to display
- * @param {string} type Selects log type
- * @param {string} info Display line number {Use 'y'}
+ * @param {string} info Display line number {Use 'y' or 'Yes'}
  * @returns {console.log} console.log
  */
 
-const log = (message, type, info) => {
-    if (info === null || info === undefined) {
-        if (type === 'log') {
+const log = (message, info) => {
+    if (info == null || info == undefined) {
             console.log('[ Log: ' + message + ' ]')
-        } else if (type === 'error') {
+    } else if (info.toLowerCase() == 'y' || info.toLowerCase() == 'yes') {
+            console.log('[ Log: ' + message + ' ]' + '\n at ' + getLine())
+    } else if (info.toLowerCase() == 'n' || info.toLowerCase() == 'no') {
+    } else {
+        console.error('[ Error: ' + 'Unknown log "Info"' + ' ]'+ '\n at ' + getLine())
+    }
+}
+
+/**
+ * @param {any} message Info to display
+ * @param {string} info Display line number {Use 'y' or 'Yes'}
+ * @returns {console.log} console.error
+ */
+
+const error = (message, info) => {
+    if (info == null || info == undefined) {
             console.error('[ Error: ' + message + ' ]')
-        } else if (type === 'info') {
-            console.info('[ Info: ' + message + ' ]')
-        } else if (type === undefined || type === null) {
-            console.log('[ Log: ' + message + ' ]')
-        } else {
-            console.error('Unknown log type at \n' + getLine())
-        }
-    } else if (info === 'y') {
-        if (type === 'log') {
-            console.log('[ Log: ' + message + ' ]' + '\n at ' + getLine())
-        } else if (type === 'error') {
+    } else if (info.toLowerCase() == 'y' || info.toLowerCase() == 'yes') {
             console.error('[ Error: ' + message + ' ]' + '\n at ' + getLine())
-        } else if (type === 'info') {
-            console.info('[ Info: ' + message + ' ]' + '\n at ' + getLine())
-        } else if (type === undefined || type === null) {
-            console.log('[ Log: ' + message + ' ]' + '\n at ' + getLine())
-        } else {
-            console.error('Unknown log type at \n' + getLine())
-        }
+    } else if (info.toLowerCase() == 'n' || info.toLowerCase() == 'no') {
+    } else {
+        console.error('[ Error: ' + 'Unknown error "Info"' + ' ]'+ '\n at ' + getLine())
     }
 }
 
@@ -103,4 +102,4 @@ const strHash= (str, hash, start, end) => {
     return fin
 }
 
-module.exports = {log, getLine, dumArr, capitalize, filterNull, strHash}
+module.exports = {log, error, getLine, dumArr, capitalize, filterNull, strHash}

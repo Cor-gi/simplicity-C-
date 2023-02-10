@@ -13,36 +13,44 @@ $ npm install simplicity-c
 ## Implementation
 
 ``` javascript
-const { log, getLine, dumArr, capitalize, filterNull, strHash } = require('simplicity-c')
+const { log, error, getLine, dumArr, capitalize, filterNull, strHash } = require('simplicity-c')
 ```
 
 # Functions
 
 
 ### Log:
-Better log system containing multiple types and line positioning
+Better log system with line positioning
 ```javascript
 // Syntax
-log(message, type, info)
+log(message, info)
 ```
 ``` javascript
 log('Hello World!')
 //  $ [ Log: Hello World! ]
 
-log('Hello World!', 'log')
-//  $ [ Log: Hello World! ]
+log('Hello World!', 'y')
+//  $ [ Log: Hello World! ] at {Call Position}
 
-log('This is an error', 'error')
-// $ [ Error: This is an error ]
+log('Hello World!', 'yes')
+//  $ [ Log: Hello World! ] at {Call Position}
+```
 
-log('Hello World!', 'info')
-//  $ [ Info: Hello World! ]
+### Error:
+Better error system with line positioning
+```javascript
+// Syntax
+error(message, info)
+```
+``` javascript
+error('Hello World!')
+//  $ [ Error: Hello World! ]
 
-log('Hello World!', 'log', 'yes')
-//  $ [ Info: Hello World! ] at {Call position}
+error('Hello World!', 'y')
+//  $ [ Error: Hello World! ] at {Call Position}
 
-log('Hello World!', null, 'yes')
-//  $ [ Info: Hello World! ]  at {Call position}
+error('Hello World!', 'yes')
+//  $ [ Error: Hello World! ] at {Call Position}
 ```
 
 ### GetLine:
