@@ -1,5 +1,5 @@
 /**
- * @returns {string}
+ * @returns {string} {Called Line Info}
  */
 
 const getLine = () => {
@@ -14,20 +14,35 @@ const getLine = () => {
 /**
  * @param {any} message Info to display
  * @param {string} type Selects log type
- * @returns {console.log}
+ * @param {string} info Display line number
+ * @returns {console.log} console.log
  */
 
-const log = (message, type) => {
-    if (type === 'log') {
-        console.log('[ Log: ' + message + ' ]' + '\n at ' + getLine())
-    } else if (type === 'error') {
-        console.error('[ Error: ' + message + ' ]' + '\n at ' + getLine())
-    } else if (type === 'info') {
-        console.info('[ Info: ' + message + ' ]' + '\n at ' + getLine())
-    } else if (type === undefined) {
-        console.log('[ Log: ' + message + ' ]' + '\n at ' + getLine())
-    } else {
-        console.error('Unknown log type at \n' + getLine())
+const log = (message, type, info) => {
+    if (info === null || info === undefined) {
+        if (type === 'log') {
+            console.log('[ Log: ' + message + ' ]')
+        } else if (type === 'error') {
+            console.error('[ Error: ' + message + ' ]')
+        } else if (type === 'info') {
+            console.info('[ Info: ' + message + ' ]')
+        } else if (type === undefined || type === null) {
+            console.log('[ Log: ' + message + ' ]')
+        } else {
+            console.error('Unknown log type at \n' + getLine())
+        }
+    } else if (info === 'yes') {
+        if (type === 'log') {
+            console.log('[ Log: ' + message + ' ]' + '\n at ' + getLine())
+        } else if (type === 'error') {
+            console.error('[ Error: ' + message + ' ]' + '\n at ' + getLine())
+        } else if (type === 'info') {
+            console.info('[ Info: ' + message + ' ]' + '\n at ' + getLine())
+        } else if (type === undefined || type === null) {
+            console.log('[ Log: ' + message + ' ]' + '\n at ' + getLine())
+        } else {
+            console.error('Unknown log type at \n' + getLine())
+        }
     }
 }
 
@@ -35,12 +50,24 @@ const log = (message, type) => {
  * 
  * @param {any} content Item placed in each slot
  * @param {number} count Number of slots
- * @returns {Array}
+ * @returns {Array} Dummy Array
  */
 
 const dumArr = (content, count) => {
     return [...new Array(count).fill(content)]
 }
 
+/**
+ * 
+ * @param {string} message String to be capitalized
+ * @returns {string} Capitalized String
+ */
 
-module.exports = {log, getLine, dumArr}
+const capitalize = (message) => {
+    const finPos = message.charAt(0)
+    const fin = finPos.toUpperCase() + message.slice(1)
+    return fin
+}
+
+
+module.exports = {log, getLine, dumArr, capitalize}

@@ -1,4 +1,4 @@
-# simplicity-C-
+# simplicity-C
 
 > Package providing multiple supplementaries in JavaScript
 
@@ -13,7 +13,7 @@ $ npm install simplicity-c
 ## Implementation
 
 ``` javascript
-const { log, getLine } = require('simplicity-c')
+const { log, getLine, dumArr, capitalize } = require('simplicity-c')
 ```
 
 # Functions
@@ -23,20 +23,26 @@ const { log, getLine } = require('simplicity-c')
 Better log system containing multiple types and line positioning
 ```javascript
 // Syntax
-log(message, type)
+log(message, type, info)
 ```
 ``` javascript
 log('Hello World!')
-//  $ [ Log: Hello World! ] at {Call Position}
+//  $ [ Log: Hello World! ]
 
-log('Hello World!' 'log')
-//  $ [ Log: Hello World! ] at {Call Position}
+log('Hello World!', 'log')
+//  $ [ Log: Hello World! ]
 
 log('This is an error', 'error')
-// $ [ Error: This is an error ] at {Call Position}
+// $ [ Error: This is an error ]
 
-log('Hello World!' 'info')
-//  $ [ Info: Hello World! ] at {Call Position}
+log('Hello World!', 'info')
+//  $ [ Info: Hello World! ]
+
+log('Hello World!', 'log', 'yes')
+//  $ [ Info: Hello World! ] at {Call position}
+
+log('Hello World!', null, 'yes')
+//  $ [ Info: Hello World! ]  at {Call position}
 ```
 
 ### GetLine:
@@ -48,4 +54,28 @@ getLine()
 ``` javascript
 console.log(getLine())
 //  $ {Call Position And Info}
+```
+
+### DumArr:
+Makes a dummy array with custom content 
+and  custom length
+``` javascript
+// Syntax
+dumArr(content, count)
+```
+``` javascript
+console.log(dumArr('Item', 5))
+//  $ ['item', 'item', 'item', 'item', 'item']
+```
+
+### Capitalize
+Capitalizes a set string
+``` javascript
+// Syntax
+capitalize(message)
+```
+``` javascript
+const a = 'hello world'
+console.log(capitalize(a))
+//  $ Hello world
 ```
