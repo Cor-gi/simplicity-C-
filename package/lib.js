@@ -31,5 +31,16 @@ const log = (message, type) => {
     }
 }
 
+/**
+ * 
+ * @param {any} content Item placed in each slot
+ * @param {number} count Number of slots
+ * @returns {Array}
+ */
 
-module.exports = {log, getLine}
+const dumArr = (content, count) => {
+    return [...new Array(count).fill(content)]
+}
+
+
+module.exports = {log, getLine, dumArr}

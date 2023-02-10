@@ -1,3 +1,3 @@
-const { log, getLine } = require('simplicity-c')
+const { log, getLine, dumArr } = require('simplicity-c')
 
-log('Test')
+log(dumArr('Cool', 5))
