@@ -14,7 +14,7 @@ const getLine = () => {
 /**
  * @param {any} message Info to display
  * @param {string} type Selects log type
- * @param {string} info Display line number
+ * @param {string} info Display line number {Use 'y'}
  * @returns {console.log} console.log
  */
 
@@ -31,7 +31,7 @@ const log = (message, type, info) => {
         } else {
             console.error('Unknown log type at \n' + getLine())
         }
-    } else if (info === 'yes') {
+    } else if (info === 'y') {
         if (type === 'log') {
             console.log('[ Log: ' + message + ' ]' + '\n at ' + getLine())
         } else if (type === 'error') {
@@ -69,5 +69,38 @@ const capitalize = (message) => {
     return fin
 }
 
+/**
+ * 
+ * @param {Array} input Array to be filtered
+ * @returns {Array} Filtered Array
+ */
 
-module.exports = {log, getLine, dumArr, capitalize}
+const filterNull = (input) => {
+    return input.filter((v) => v)
+}
+
+/**
+ * 
+ * @param {string} str String to be hashed
+ * @param {string} hash Character to use as hash
+ * @param {number} start Hash Start
+ * @param {number} end Hash End
+ * @returns Hashed String
+ */
+
+const strHash= (str, hash, start, end) => {
+    const pri = str.split("")
+    const med = []
+    for (let i = start; i <= end; i++) {
+        med.push(i);
+      }
+      for (let i = 0; i < pri.length; i++) {
+        if (med.includes(i)) {
+            pri[i] = hash;
+        }
+    }
+    const fin = pri.join("")
+    return fin
+}
+
+module.exports = {log, getLine, dumArr, capitalize, filterNull, strHash}

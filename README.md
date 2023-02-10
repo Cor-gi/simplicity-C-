@@ -13,7 +13,7 @@ $ npm install simplicity-c
 ## Implementation
 
 ``` javascript
-const { log, getLine, dumArr, capitalize } = require('simplicity-c')
+const { log, getLine, dumArr, capitalize, filterNull, strHash } = require('simplicity-c')
 ```
 
 # Functions
@@ -57,8 +57,7 @@ console.log(getLine())
 ```
 
 ### DumArr:
-Makes a dummy array with custom content 
-and  custom length
+Makes a dummy array with custom content and  custom length
 ``` javascript
 // Syntax
 dumArr(content, count)
@@ -78,4 +77,28 @@ capitalize(message)
 const a = 'hello world'
 console.log(capitalize(a))
 //  $ Hello world
+```
+
+### FilterNull
+Filters undefined and null out of an array
+``` javascript
+// Syntax
+filterNull(input)
+```
+``` javascript
+const a = [undefined, null, 'Hello', 5, null, 'Hola']
+console.log(filterNull(a))
+//  $ [Hello, 5, Hola]
+```
+
+### StrHash
+Hashes a certain portion of a string with a custom hash
+**Reminder:** *This function uses Zero-Based numbering*
+``` javascript
+// Syntax
+strHash(str, hash, start, end)
+```
+``` javascript
+console.log(strHash('This is a test!', '*', 10, 13))
+//  $ This is a ****!
 ```
